@@ -3,7 +3,7 @@
   <div class="row justify-content-center mt-5">
     <div class="col-6">
       <h2><%= post.plantName %></h2>
-      <a href="/feed/<%= post.user%>">aaaa</a>
+      <span>By: <a href="/feed/<%= post.user %>"><%= postUser.userName %></a></span>
       <img class="img-fluid" src="<%= post.image%>" />
       <div class="row justify-content-between">
         <form

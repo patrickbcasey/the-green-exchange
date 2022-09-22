@@ -12,15 +12,15 @@
             <form action="/post/createPost" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
                   <label for="plantName" class="form-label">Plant</label>
-                  <input type="text" class="form-control" id="plantName" name="plantName">
+                  <input type="text" class="form-control" id="plantName" name="plantName" required>
               </div>
               <div class="mb-3">
                 <label for="info" class="form-label">Info</label>
-                <textarea class="form-control" id="info" name="info"></textarea>
+                <textarea class="form-control" id="info" name="info" required></textarea>
               </div>
               <div class="mb-3">
                 <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file">
+                <input type="file" class="form-control" id="imageUpload" name="file" required>
               </div>
               <button type="submit" class="btn btn-success" value="Upload">Submit</button>
             </form>
