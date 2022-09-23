@@ -1,46 +1,63 @@
 <%- include('partials/header') -%>
 <div class="container">
   <div class="row mt-5">
-      <div class="col-6">
+      <div class="col-12">
           <div>
               <p><strong>User Name</strong>: <%= user.userName %></p>
               <p><strong>Email</strong>: <%= user.email %></p>
           </div>
 
-          <div class="mt-5">
-            <h2>Add a post</h2>
-            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-              <div class="mb-3">
-                  <label for="plantName" class="form-label">Plant</label>
-                  <input type="text" class="form-control" id="plantName" name="plantName" required>
+            <div class="d-flex justify-content-center mt-5" >
+              <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="newPost">
+                Create New Post
+              </button>
+            </div>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <h2>Add a post</h2>
+                <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+                <div class="mb-3">
+                    <label for="plantName" class="form-label">Plant</label>
+                    <input type="text" class="form-control" id="plantName" name="plantName" required>
+                </div>
+                <div class="mb-3">
+                  <label for="info" class="form-label">Info</label>
+                  <textarea class="form-control" id="info" name="info" required></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="city" class="form-label">City</label>
+                  <input type="text" class="form-control" id="city" name="city" autocomplete="address-level2" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="imgUpload" class="form-label">Image</label>
+                  <input type="file" class="form-control" id="imageUpload" name="file" required>
+                </div>
+                <button type="submit" class="btn btn-success" value="Upload">Submit</button>
+                </form>
               </div>
-              <div class="mb-3">
-                <label for="info" class="form-label">Info</label>
-                <textarea class="form-control" id="info" name="info" required></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageUpload" name="file" required>
-              </div>
-              <button type="submit" class="btn btn-success" value="Upload">Submit</button>
-            </form>
-          </div>
+            </div>
+
+          
       </div>
-      <div class="col-6">
+      <div class="col-12">
         <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
             <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
+              <img class="img-fluid img-thumbnail" src="<%= posts[i].image%>" width="100%">
             </a>
           </li>
         <% } %>
         </ul>
-        <div class="row justify-content-center mt-5">
+        <div class="d-flex justify-content-center mt-5">
           <a class="btn btn-success" href="/feed">Return to Feed</a>
         </div>  
       </div>  
     </div>
   </div>
 </div>
+
+  
+
 <%- include('partials/footer') -%>

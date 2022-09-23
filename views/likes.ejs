@@ -16,7 +16,7 @@
 
                 <form
                   class="col-1"
-                  action="/feed/likePost/<%= posts[i]._id %>?_method=PUT"
+                  action="/likes/unlikePost/<%= posts[i]._id %>?_method=PUT"
                   method="POST"
                 >
                   <button class="btn btn-success fa fa-heart" type="submit"></button>
@@ -32,5 +32,3 @@
     </div>
   </div>  
 <%- include('partials/footer') -%>
-
-        

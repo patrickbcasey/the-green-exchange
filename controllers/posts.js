@@ -27,11 +27,23 @@ module.exports = {
       console.log(err);
     }
   },
+  getLikes: async (req, res) => {
+    try {
+      const posts = await Post.find({ wantedBy: req.user.id }).sort({ createdAt: "desc" }).lean();
+      res.render("likes.ejs", { posts: posts });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
-      const postUser = await User.findById(post.user)
-      res.render("post.ejs", { post: post, postUser: postUser, user: req.user });
+      const postUser = await User.findById(post.user);
+      const wantUser = await User.find( { _id: post.wantedBy });
+      const likeList = []
+      wantUser.forEach(x=> likeList.push(x.userName))
+      res.render("post.ejs", { post: post, postUser: postUser, user: req.user, likeList: likeList });
     } catch (err) {
       console.log(err);
     }
@@ -46,7 +58,7 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         info: req.body.info,
-        likes: 0,
+        wantedBy: [],
         user: req.user.id,
       });
       console.log("Post has been added!");
@@ -57,14 +69,88 @@ module.exports = {
   },
   likePost: async (req, res) => {
     try {
-      await Post.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
+    const isPresent = await Post.find(
+      { _id: req.params.id },
+      {
+         wantedBy: { 
+            $elemMatch: { $eq: req.user.id }
+         }
+      }
+  )
+
+      if(isPresent[0].wantedBy.length === 0) {
+        await Post.findOneAndUpdate(
+          { _id: req.params.id },
+            {
+              $push: { wantedBy: req.user.id },
+            }
+        );
+      } else {
+        await Post.findOneAndUpdate(
+          { _id: req.params.id },
+            {
+              $pull: { wantedBy: req.user.id },
+            }
+        );
+      }
       console.log("Likes +1");
       res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  likeFeedPost: async (req, res) => {
+    try {
+    const isPresent = await Post.find(
+      { _id: req.params.id },
+      {
+         wantedBy: { 
+            $elemMatch: { $eq: req.user.id }
+         }
+      }
+  )
+
+      if(isPresent[0].wantedBy.length === 0) {
+        await Post.findOneAndUpdate(
+          { _id: req.params.id },
+            {
+              $push: { wantedBy: req.user.id },
+            }
+        );
+      } else {
+        await Post.findOneAndUpdate(
+          { _id: req.params.id },
+            {
+              $pull: { wantedBy: req.user.id },
+            }
+        );
+      }
+      console.log("Likes +1");
+      res.redirect(`/feed`);a
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  unlikePost: async (req, res) => {
+    try {
+    const isPresent = await Post.find(
+      { _id: req.params.id },
+      {
+         wantedBy: { 
+            $elemMatch: { $eq: req.user.id }
+         }
+      }
+  )
+        await Post.findOneAndUpdate(
+          { _id: req.params.id },
+            {
+              $pull: { wantedBy: req.user.id },
+            }
+        );
+
+      console.log("Likes +1");
+      res.redirect(`/likes`);
     } catch (err) {
       console.log(err);
     }

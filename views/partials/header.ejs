@@ -26,25 +26,53 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <div class="container-xxl-fluid bd-gutter mt-3 my-md-4 bd-layout">
-      <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
-        <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap">
-          <div class="justify-content-center text-center ">
-            <h1 class=""><a href="/feed" class="link-success">The Green Exchange</a></h1>
-            <span>The Plant Trading Network</span>
+    <div class="skippy visually-hidden-focusable overflow-hidden">
+      <div class="container-xl">
+        <a class="d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
+        <a class="d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #095732;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/feed">Feed</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/profile">Profile</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/likes">Liked Posts</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="/profile/#newPost" class="nav-link btn btn-secondary">New Post</a>
+            </li>
+          </ul>
+          
+          <div class="col text-center">
+            <h1 class="bd-title text-white">The Green Exchange</h1>
           </div>
 
-          <div class="">
-            <ul>
-              <li><a href="/profile" class="btn btn-success nav-link">Profile</a></li>
-              <li><a href="/logout" class="btn btn-success nav-link">Logout</a></li>
-              <li><a href="/feed" class="btn btn-success nav-link">Return to Feed</a></li>
-          </ul>
-          </div>
-        </nav>
-        
-        
-      </header>
-  </div>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-light" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
   </body>
 </html>

@@ -10,6 +10,9 @@ router.get("/", homeController.getIndex);
 router.get("/profile", ensureAuth, postsController.getProfile);
 router.get("/feed", ensureAuth, postsController.getFeed);
 router.get("/feed/:id", ensureAuth, postsController.getFeedById);
+router.put("/feed/likePost/:id", postsController.likeFeedPost);
+router.get("/likes", postsController.getLikes)
+router.put("/likes/unlikePost/:id", postsController.unlikePost);
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);

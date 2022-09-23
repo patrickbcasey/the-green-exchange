@@ -1,11 +1,17 @@
 <%- include('partials/header') -%>
 <div class="container">
   <div class="row justify-content-center mt-5">
-    <div class="col-6">
+    <div class="col-12">
       <h2><%= post.plantName %></h2>
-      <span>By: <a href="/feed/<%= post.user %>"><%= postUser.userName %></a></span>
-      <img class="img-fluid" src="<%= post.image%>" />
-      <div class="row justify-content-between">
+      <span class="row flex-nowrap">
+        By: <a href="/feed/<%= post.user %>"><%= postUser.userName %></a>
+      </span>
+      <div class="text-center border border-success">
+        <img class="img-fluid" src="<%= post.image%>" width="70%"/>
+      </div>
+
+      <section class="row justify-content-between text-center m-2">
+        
         <form
           class="col-1"
           action="/post/likePost/<%= post.id %>?_method=PUT"
@@ -13,26 +19,46 @@
         >
           <button class="btn btn-success fa fa-heart" type="submit"></button>
         </form>
-        <h3 class="col-3">Likes: <%= post.likes %></h3>
+
+        <%if(likeList.length >= 4){ %>
+        <h3 class="col-3"><%= likeList.slice(0,likeList.length).join(', ') %> and <%= likeList.length - likeList.slice(0,likeList.length).length %> others want this</h3>
+
+        <% } else if(likeList.length === 0) { %>
+          <h3 class="col-3 invisible">No one wants this yet</h3>
+
+        <% } else if(likeList.length === 1) { %>
+          <h3 class="col-3"><%= likeList[0]%> wants this</h3>
+
+          <% } else { %>
+            <h3 class="col-3"><%= likeList.join(' and, ') %> want this</h3>
+          <%}%> 
+ 
         <%if(post.user == user.id){ %>
+
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
           method="POST"
-          class="col-3"
+          class="col-1" 
         >
           <button class="btn btn-success fa fa-trash" type="submit"></button>
         </form>
-        <%}%>
-      </div>
+
+        <% } else { %>
+          <span class="col-1 invisible"></span>
+        <%}%> 
+
+      </section>
     </div>
-    <div class="col-3 mt-5">
+    <div class="row mt-5 text-center">
       <p><%= post.info %></p>
     </div>
-    <div class="col-6 mt-5">
+    <div class="col-6 mt-5 text-center">
       <a class="btn btn-success" href="/profile">Return to Profile</a>
       <a class="btn btn-success" href="/feed">Return to Feed</a>
     </div>
   </div>
 </div>
+
+
 
 <%- include('partials/footer') -%>
