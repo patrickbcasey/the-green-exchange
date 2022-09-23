@@ -52,6 +52,50 @@
     <div class="row mt-5 text-center">
       <p><%= post.info %></p>
     </div>
+
+    <div class="container">
+
+      
+        <div class="mb-5">
+          <h2>Add a Comment</h2>
+          <form action="/comment/createComment/<%=post.id%>" method="POST" class="">
+            <input type="text" name="comment" required class="p-1">
+            <button class="btn btn-success" type="submit">Comment</button>
+          </form>
+        </div>
+        
+
+
+        
+        <% for (let i=0; i < comment.length; i++) {%>
+
+
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><%=comment[i].user.userName %></h5>
+                <small>
+                  <%if(comment[i].user._id==user.id){ %>
+                    <form action="/comment/deleteComment/<%=comment[i]._id%>?_method=DELETE" method="POST" class="badge">
+                      <button class="btn btn-success fa fa-trash" type="submit"></button>
+                    </form>
+                    <%}%>
+                </small>
+              </div>
+              <p class="mb-1"> <%=comment[i].comment%></p>
+
+            </a>
+          </div>
+          
+        <%}%>
+
+              
+                
+                  
+
+
+    </div>
+
     <div class="col-6 mt-5 text-center">
       <a class="btn btn-success" href="/profile">Return to Profile</a>
       <a class="btn btn-success" href="/feed">Return to Feed</a>
@@ -62,3 +106,5 @@
 
 
 <%- include('partials/footer') -%>
+
+
