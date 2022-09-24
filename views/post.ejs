@@ -30,7 +30,7 @@
           <h3 class="col-3"><%= likeList[0]%> wants this</h3>
 
           <% } else { %>
-            <h3 class="col-3"><%= likeList.join(' and, ') %> want this</h3>
+            <h3 class="col-3"><%= likeList.join(', and ') %> want this</h3>
           <%}%> 
  
         <%if(post.user == user.id){ %>
@@ -70,8 +70,8 @@
         <% for (let i=0; i < comment.length; i++) {%>
 
 
-          <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-action" aria-current="true">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1"><%=comment[i].user.userName %></h5>
                 <small>
@@ -82,10 +82,10 @@
                     <%}%>
                 </small>
               </div>
-              <p class="mb-1"> <%=comment[i].comment%></p>
+              <p class="mb-1 text-wrap text-break"> <%=comment[i].comment%></p>
 
-            </a>
-          </div>
+            </li>
+          </ul>
           
         <%}%>
 
