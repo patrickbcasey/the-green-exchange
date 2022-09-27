@@ -1,34 +1,5 @@
 <%- include('partials/header') -%>
-  <div class="container">
-    <div class="row justify-content-center mt-5">
-      <main class="row row-cols-1 row-cols-md-3 g-4">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <div class="col">
 
-            <div class="card border-success">
-              <img class="img-fluid img-thumbnail" src="<%= posts[i].image%>">
-              <div class="card-body text-center">
-                <h5 class="card-title"><%= posts[i].plantName %></h5>
-                <p class="card-text"><%= posts[i].info%></p>
-                <a href="/post/<%= posts[i]._id%>" class="btn btn-success">Go to Post</a>
-              </div>
-              <div class="card-body text-center">
+<%- include('partials/feed') -%>
 
-                <form
-                  class="col-1"
-                  action="/likes/unlikePost/<%= posts[i]._id %>?_method=PUT"
-                  method="POST"
-                >
-                  <button class="btn btn-success fa fa-heart" type="submit"></button>
-                </form>
-
-                <a href="#" class="card-link">Plant Info</a>
-              </div>
-            </div>
-          </div>
-        <% } %>
-
-      </main>
-    </div>
-  </div>  
 <%- include('partials/footer') -%>

@@ -129,7 +129,7 @@ module.exports = {
         );
       }
       console.log("Likes +1");
-      res.redirect(`/feed`);a
+      res.redirect(`back`);
     } catch (err) {
       console.log(err);
     }

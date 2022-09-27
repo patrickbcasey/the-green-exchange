@@ -3,11 +3,11 @@
   <div class="row justify-content-center mt-5">
     <div class="col-12">
       <h2><%= post.plantName %></h2>
-      <span class="row flex-nowrap">
+      <span>
         By: <a href="/feed/<%= post.user %>"><%= postUser.userName %></a>
       </span>
       <div class="text-center border border-success">
-        <img class="img-fluid" src="<%= post.image%>" width="70%"/>
+        <img class="img-fluid p-2" src="<%= post.image%>" width="70%"/>
       </div>
 
       <section class="row justify-content-between text-center m-2">
@@ -56,17 +56,17 @@
     <div class="container">
 
       
-        <div class="mb-5">
+        <div class="mb-5 text-center">
           <h2>Add a Comment</h2>
-          <form action="/comment/createComment/<%=post.id%>" method="POST" class="">
-            <input type="text" name="comment" required class="p-1">
+          <form action="/comment/createComment/<%=post.id%>" method="POST" class="d-flex">
+            <input  class="mx-1 col-11" type="text" name="comment" required>
             <button class="btn btn-success" type="submit">Comment</button>
           </form>
         </div>
         
 
 
-        
+
         <% for (let i=0; i < comment.length; i++) {%>
 
 
