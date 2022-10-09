@@ -1,0 +1,20 @@
+<%- include('partials/header') -%>
+
+
+<h1 class="m-3">Search Results</h1>
+<main class="d-flex flex-column m-5" id="content">
+    <% if(user) { %>
+        <% for(var i=0; i<user.length; i++) {%>
+        <a href="/feed/<%- user[i].id -%>"><%- user[i].userName -%></a>
+
+        <% } %>
+    <% } else { %>
+        <h2>No Users Found</h2>
+    <% } %>
+</main>
+
+
+
+
+
+<%- include('partials/footer') -%>

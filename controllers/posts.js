@@ -40,7 +40,7 @@ module.exports = {
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
-      const postUser = await User.findById(post.user);
+      const postUser = await User.findById(post.user, { password: 0, });
       const comment = await Comments.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean().populate('user').lean();
       const wantUser = await User.find({ _id: post.wantedBy });
       const likeList = []

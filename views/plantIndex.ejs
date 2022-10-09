@@ -1,6 +1,12 @@
 <%- include('partials/header') -%>
 
-<h1>Under Construction</h1>
+<h1>Plant List</h1>
+<ol class="d-flex flex-column m-5" id="content">
+    <% for(let i = 0; i <plants.length; i++) {%>
+        <li><a href="/plants/id/<%- plants[i].id -%>"><%- plants[i].plantName -%></a></li>
+        <% } %>
+</ol>
+
 
 
 <%- include('partials/footer') -%>

@@ -1,6 +1,18 @@
 <%- include('partials/header') -%>
+<main class="text-center d-flex flex-column mt-5" id="content">
+    <h1><%- plant.plantName[0].toUpperCase() -%><%- plant.plantName.slice(1) -%></h1>
+    <h3><%- plant.botanicalName -%></h3>
 
-<h1>Under Construction2</h1>
+    <section class="img-fluid">
+        <img src="<%- plant.image -%>" alt="picture of <%- plant.planeName -%>" class=" h-25 w-25">
+    </section>
+    <span class="mt-3  fw-bold">Variety:</span>
+    <span class="m-3"><%- plant.variety || "unknown" -%></span>
+    <span class="mt-3  fw-bold">Light Requirements:</span>
+    <span class="m-3"><%- plant.exposure -%></span>
+</main>
+
+
 
 
 <%- include('partials/footer') -%>

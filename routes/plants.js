@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const upload = require("../middleware/multer");
 const plantsController = require("../controllers/plants");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
@@ -9,6 +8,8 @@ router.get("/", ensureAuth, plantsController.getPlantIndex);
 
 router.get("/id/:id", ensureAuth, plantsController.getPlantById);
 
-router.get("/api", plantsController.getAPI);
+router.get("/api/:name", plantsController.getAPI);
+
+router.get("/api/", plantsController.getRandAPI);
 
 module.exports = router;

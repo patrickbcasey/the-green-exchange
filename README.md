@@ -9,6 +9,8 @@ npm install
 npm start
 ``` 
 Open http://localhost:3000 with your browser
+Create a .env file in the root folder
+Add a database connection string named DB_STRING and a cloudinary connection
 
 ## This Site and its API is actively under construction
 
