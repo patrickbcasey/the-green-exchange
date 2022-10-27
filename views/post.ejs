@@ -21,7 +21,7 @@
         </form>
 
         <%if(likeList.length >= 4){ %>
-        <h3 class="col-3"><%= likeList.slice(0,likeList.length).join(', ') %> and <%= likeList.length - likeList.slice(0,likeList.length).length %> others want this</h3>
+        <h3 class="col-3"><%= likeList.slice(0,3).join(', ') %> and <%= likeList.length - likeList.slice(0,3).length %> others want this</h3>
 
         <% } else if(likeList.length === 0) { %>
           <h3 class="col-3 invisible">No one wants this yet</h3>

@@ -45,6 +45,7 @@ module.exports = {
       const wantUser = await User.find({ _id: post.wantedBy });
       const likeList = []
       wantUser.forEach(x=> likeList.push(x.userName))
+      likeList.reverse()
       res.render("post.ejs", { post: post, postUser: postUser, comment: comment, user: req.user, likeList: likeList });
     } catch (err) {
       console.log(err);
