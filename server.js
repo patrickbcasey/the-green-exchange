@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require('path')
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
@@ -63,7 +64,14 @@ app.use("/comment", commentRoutes);
 app.use("/plants", plantRoutes);
 app.use("/search", searchRoutes);
 
+// 404
+app.use((req, res, next) => {
+  res.status(404).render("404.ejs")
+})
+
+
 //Server Running
 app.listen(process.env.PORT, () => {
   console.log("Server is running");
 });
+
