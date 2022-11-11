@@ -1,5 +1,24 @@
-<h1 align="center">The Green Exchange</h1>
-The Green Exchange provides a platform for people to buy/sell/trade plants and interact other users. Users will see the plants that other people are willing to sell or trade, as well as make requests for plants they would like to obtain. Users can explore the vast range of plant diversity to fulfill their needs for indoor and outdoor plants.
+<div align="center">
+<img src="/public/img/logo.svg" alt='A green leaf' width="200"/> 
+
+
+<h3 align="center">The Green Exchange</h3>
+
+  <p align="center">
+   The Green Exchange provides a platform for people to buy/sell/trade plants and interact other users. Users will see the plants that other people are willing to sell or trade, as well as make requests for plants they would like to obtain. Users can explore the vast range of plant diversity to fulfill their needs for indoor and outdoor plants.
+    <br />
+    <a href="https://github.com/patrickbcasey/the-green-exchange"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://the-green-exchange.cyclic.app/">View Demo</a>
+    ·
+    <a href="https://github.com/patrickbcasey/the-green-exchange/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/patrickbcasey/the-green-exchange/issues">Request Feature</a>
+  </p>
+</div>
+
+
 
 ## Getting Started:
 On the development server:
