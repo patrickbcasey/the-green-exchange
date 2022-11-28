@@ -1,5 +1,5 @@
 <div align="center">
-<img src="/public/img/logo.svg" alt='A green leaf' width="200"/> 
+<img src="/public/img/vector/logo.svg" alt='A green leaf' width="200"/> 
 
 
 <h3 align="center">The Green Exchange</h3>
